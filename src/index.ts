@@ -1,6 +1,7 @@
 import cors from 'cors'
 import express from 'express'
 import { config } from '~/config'
+import { errorHandler } from './middlewares/error.handler';
 
 
 let helloWorld = function() {
@@ -30,8 +31,10 @@ app.get('/hello', (req, res) => {
     res.send(helloWorld())
   })
 
+  app.use(errorHandler);
+
 /**
  * On demande à Express d'ecouter les requêtes sur le port défini dans la config
  */
-app.listen(config.API_PORT, () => console.log('Silence, ça tourne.'))
+app.listen(config.API_PORT, () => console.log('Running.'))
 
