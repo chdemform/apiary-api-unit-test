@@ -1,6 +1,7 @@
 import cors from 'cors'
 import express from 'express'
 import { config } from '~/config'
+import { routerBees } from './controllers/bee.controller';
 import { errorHandler } from './middlewares/error.handler';
 
 
@@ -25,6 +26,8 @@ app.use(express.json())
  * à faire des requêtes sur notre API.
  */
 app.use(cors())
+
+app.use(routerBees);
 
 
 app.get('/hello', (req, res) => {
